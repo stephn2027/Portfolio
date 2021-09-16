@@ -4,12 +4,17 @@
   "description": "",
   "main": "scripts.js",
   "scripts": {
-    "start": "browser-sync start --directory --server --files \"*.css, *.html, *.js\""
+    "start": "parcel index.html",
+    "predeploy": "rm -rf dist && parcel build index.html",
+    "deploy": "gh-pages -d dist",
+    "browser-sync": "browser-sync start --directory --server --files \"*.css, *.html, *.js\""
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.27.4"
+    "browser-sync": "^2.27.4",
+    "gh-pages": "^3.2.3",
+    "parcel": "^2.0.0-rc.0"
   },
   "dependencies": {
     "@mdi/font": "^5.9.55",
