@@ -5,7 +5,7 @@
   "main": "scripts.js",
   "scripts": {
     "start": "parcel index.html",
-    "predeploy": "rm -rf dist && parcel build index.html",
+    "predeploy": "rm -rf dist && parcel build index.html --public-url /Porfolio",
     "deploy": "gh-pages -d dist",
     "browser-sync": "browser-sync start --directory --server --files \"*.css, *.html, *.js\""
   },
