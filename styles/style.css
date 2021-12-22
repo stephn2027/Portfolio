@@ -508,6 +508,12 @@ li.top a:hover{
   #title .span-header{
     padding-bottom: 2rem;
   }
+  .dropdown{
+    top:-3.52rem;
+  }
+  .link-bio{
+    padding-left: 2rem;
+  }
 }
 .projects {
   width: min(15em, 23em);
@@ -532,13 +538,14 @@ li.top a:hover{
   font-family: 'KoHo', sans-serif;
 }
 .other-links {
-  width: max(10em, 12em);
+  width:100%;
   height: fit-content;
-  padding-inline: 1.55rem;
+  padding-inline: 1rem;
 }
 @media screen and (max-width: 500px) {
   .other-links {
-    margin-left: 3rem;
+    
+    margin-left: 0rem;
   }
 }
 .other-links li {
