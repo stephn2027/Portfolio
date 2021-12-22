@@ -126,6 +126,7 @@ projs.forEach(proj=>proj.addEventListener('click',()=>{
 
   
 }));
+
 closeButton.addEventListener('click',()=>{
   modal.style.display = 'none';
   window.onscroll = function(){};

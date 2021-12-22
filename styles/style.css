@@ -22,6 +22,7 @@ body {
   min-height: 100vh;
   background: rgb(255, 255, 255);
   font-family: 'Raleway-bold';
+  width: 100%;
 }
 
 h1,
@@ -44,6 +45,7 @@ p {
 }
 
 .container {
+  
   justify-content: center;
   align-items: center;
   text-align: justify;
@@ -60,6 +62,7 @@ p {
 /* narrow screen sizes */
 @media only screen and (max-width: 320px) {
   .split {
+    display: flex;
     flex-direction: column;
     flex-wrap: wrap;
   }
@@ -277,7 +280,7 @@ li.top {
   left: 0.1rem;
   margin-bottom: 0;
   max-width: 0;
-  overflow: hidden;
+  
   background: white;
   transition: all 0.5s;
   font-weight: 600;
@@ -352,7 +355,7 @@ li.top a:hover{
   
 }
 .bio img {
-  transform-origin: 60%;
+  transform-origin: 90%;
 
   margin-right: 1.225rem;
   background: none;
@@ -363,14 +366,24 @@ li.top a:hover{
   color: var(--color-secondary);
   align-self: start;
   font-size: clamp(1rem, 1vw, 2rem);
-  overflow: hidden;
+  overflow: auto;
   justify-content: left;
   text-align: left;
   font-weight: 800;
 }
+.bio .link-bio{
+  padding-top: 1rem;
+  margin-left: -1rem;
+  font-size: 1rem;
+  color: cyan;
+}
+.link-bio:hover{
+  color: rgb(7, 199, 199);
+}
 .about-me-pic {
-  align-content: center;
-  justify-content: center;
+  position: relative;
+  align-content: start;
+  justify-content: start;
   text-align: center;
   width: min(9rem, 14rem);
   height: min(9rem, 14rem);
@@ -466,7 +479,7 @@ a.profile-link {
   width: 100%;
   display: block;
   height: max-content;
-  overflow: hidden;
+  
   text-align: center;
 
 }
@@ -477,6 +490,7 @@ section.about .container{
   align-items: center;
   justify-content: center;
   z-index: 0;
+  width: 100%;
 }
 section.about .about-header {
   color: var(--color-secondary);
@@ -524,7 +538,10 @@ section.about .about-header-bar{
 
   text-align: justify;
 }
-@media screen and (max-width: 745px) {
+.links a{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+@media screen and (max-width: 725px) {
   .split {
     flex-wrap: wrap;
   }
@@ -535,7 +552,7 @@ section.about .about-header-bar{
     margin-left: 5rem;
   }
   .about {
-    overflow-y: auto;
+    overflow-y: hidden;
   }
   #welcome-section {
     height: 50vh;
@@ -559,7 +576,7 @@ section.about .about-header-bar{
     
   }
 }
-@media (max-width: 500px) {
+@media (max-width: 300px) {
   .about-picture {
     margin-left: -3rem;
   
@@ -567,10 +584,34 @@ section.about .about-header-bar{
   section.about .container{
     justify-items: center;
     padding-left: 1.5rem;
+    
+  }
+  .about-text{
+    text-align: center;
+    margin-left: 2rem;
+  }
+  .about-text p{
+    display: block;
+    padding-inline: 2rem;
+    margin-inline: 4rem;
+    padding-inline: 2rem;
+  }
+  .links{
+    text-align: center;
+    font-size: 1rem;
   }
   
 }
-@media screen and (max-width:375px) {
+@media(max-width:510px){
+ .about-text p{
+   margin-inline:2rem;
+   padding-inline: 4rem;
+ }
+ .about-img{
+   margin-inline: auto;
+ }
+}
+@media screen and (max-width:376px) {
   .nav-ul > li > a {
     margin: .5rem;
     font-size: 1em;
@@ -585,7 +626,9 @@ section.about .about-header-bar{
   }
   .links{
     margin-left: 0;
-    padding-inline: 1rem;
+    padding-inline: 3rem;
+    font-size: 1rem;
+    
   }
   
  
@@ -595,17 +638,23 @@ section.about .about-header-bar{
     margin-left:2rem;
     padding-inline: 2rem;
     font-size: 1rem;
-    width: 90%;
+    max-width: 90%;
   }
   .about-text p{
-    display: flex;
+    padding-top: 1rem;
+    display: block;
     text-align: center;
     justify-content: center;
-    padding-inline: 3rem;
+    padding-inline:3rem;
     width: 80%;
   }
   .about-img{
-    padding-left: 1.5rem ;
+    padding-left: 3rem;
+    margin-bottom: 1rem;
+  }
+  .about-img img{
+    width: 350px;
+    height: auto;
   }
   
 
@@ -664,12 +713,14 @@ section.about .about-header-bar{
   font-size: clamp(1.25rem, 1.5vw, 4rem);
   margin-bottom: 2rem;
   text-align: justify;
+  
 }
 .about-text p {
   color: var(--color-secondary);
   font-size: clamp(1.24rem, 1.25vw, 3rem);
   font-weight: 600;
   text-align: left;
+  max-width: 90%;
 }
 
 
@@ -776,18 +827,18 @@ a.text-color-white:visited {
 a.text-color-red,
 a.text-color-red:after,
 a.text-color-red:visited {
-  color: #09e1f5;
+  color: #0ac0d1;
   font-family: monospace;
   font-weight: bold;
   text-rendering: geometricPrecision;
-  text-shadow: -0.4px 0.4px 0.4px rgba(3, 18, 51, 0.913);
+  text-shadow: -0.0px 0.0px 20px rgba(216, 216, 218, 0.913);
 }
 .links a {
   padding-left: 2.25rem;
   display: block;
   margin: 1vh 0;
-  font-family: monospace;
-  font-size: clamp(1.24rem, 1.5vw, 2rem);
+  font-family: sans-serif;
+  font-size: clamp(1rem, 1.5vw, 2rem);
 }
 /* projects section */
 
@@ -883,13 +934,31 @@ section.project-section .projects-header-bar{
   transition: 0.5s ease;
   opacity: 0;
   position: absolute;
-  top: 70%;
+  top: 60%;
   left: 50%;
 
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
-.proj-text .proj-inner-text {
+.proj-text-up{
+ color:rgb(238, 65, 65);
+ 
+ display:flex;
+ flex-wrap: wrap;
+ flex-direction: row;
+ width: 95%;
+ margin-inline: auto;
+ justify-content: center;
+}
+.proj-text-up p{
+  font-size: clamp(.9rem,1.5vw,2rem);
+  font-weight: bold;
+  margin: 1px;
+  padding: 2px;
+  
+  
+}
+.proj-text .proj-inner-text{
   background:var(--color-purple);
   color: grey;
   font-size: clamp(1rem,1.5vw,3rem);
@@ -902,7 +971,7 @@ section.project-section .projects-header-bar{
   box-shadow: 0.1rem -0.1rem 0.6rem 0.1rem rgb(238, 232, 232);
   cursor: pointer;
   animation: none;
-  transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
+  transition:  color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 .proj-inner-text a{
   color: #fff;
@@ -932,7 +1001,7 @@ section.project-section .projects-header-bar{
   }
 }
 
-.proj:hover .proj-image {
+.proj:hover .proj-image{
   opacity: .2;
   
 }
