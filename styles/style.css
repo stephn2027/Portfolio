@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Khula:700);
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono:400');
 html {
   box-sizing: border-box;
   line-height: 1.6;
@@ -172,7 +174,7 @@ section.welcome {
 
 #title {
   position: absolute;
-  top: 48%;
+  top: 38%;
   left: 0;
   right: 0;
   color: rgb(207, 193, 193);
@@ -190,7 +192,7 @@ section.welcome {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: 'Zen Tokyo Zoo', cursive;
-  font-size: clamp(2rem, 7vw, 9rem);
+  font-size: clamp(2.4rem, 7vw, 9rem);
   text-shadow: 0.5rem 0rem 10rem rgba(87, 81, 8, 0.4);
   margin-bottom: 1rem;
   padding-bottom: 1rem;
@@ -209,6 +211,33 @@ section.welcome {
 
   letter-spacing: 0.2rem;
 }
+/* sub text animation */
+.hidden {
+  opacity:0;
+}
+.console-container {
+ 
+  font-family:Khula;
+  font-size: clamp(1.35rem, 4.25vw, 4rem);
+  text-align:center;
+  height:200px;
+  width:90%;
+  display:block;
+  position:relative;
+  color:white;
+  top:-4rem;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:auto;
+  font-weight: bolder;
+}
+.console-underscore {
+   display:inline-block;
+  position:relative;
+  top:-0.14em;
+  left:10px;
+}
 
 .text-animate {
   transform: scale(1.98) no-repeat;
@@ -217,6 +246,77 @@ section.welcome {
 }
 
 /* animation header */
+
+h1{
+  animation: glitch 1s linear infinite;
+}
+h1{ 
+  background: -webkit-linear-gradient(rgb(119, 76, 76), #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Zen Tokyo Zoo', cursive;
+  font-size: clamp(2.4rem, 7vw, 9rem);
+  text-shadow: 0.5rem 0rem 10rem rgba(87, 81, 8, 0.4);
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  letter-spacing: 0.1rem;
+  font-weight: lighter;
+  
+}
+
+@keyframes glitch{
+  2%,64%{
+    transform: translate(2px,0) skew(0deg);
+  }
+  4%,60%{
+    transform: translate(-2px,0) skew(0deg);
+  }
+  62%{
+    transform: translate(0,0) skew(5deg); 
+  }
+}
+
+h1:before,
+h1:after{
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+h1:before{
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+@keyframes glitchTop{
+  2%,64%{
+    transform: translate(2px,-2px);
+  }
+  4%,60%{
+    transform: translate(-2px,2px);
+  }
+  62%{
+    transform: translate(13px,-1px) skew(-13deg); 
+  }
+}
+h1:after{
+  animation: glitchBotom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchBotom{
+  2%,64%{
+    transform: translate(-2px,0);
+  }
+  4%,60%{
+    transform: translate(-2px,0);
+  }
+  62%{
+    transform: translate(-22px,5px) skew(21deg); 
+  }
+}
 
 nav {
   width: min(90%, max-width);
