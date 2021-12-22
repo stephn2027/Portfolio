@@ -86,19 +86,20 @@ function debounce(func, wait = 20, immediate = true) {
   };
 }
 
-function checkSlide(){
-  const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2;
-        // bottom of the image
-        const imageBottom = sliderImage.offsetTop + sliderImage.height;
-        const isHalfShown = slideInAt > sliderImage.offsetTop;
-        const isNotScrolledPast = window.scrollY < imageBottom;
-        if (isHalfShown && isNotScrolledPast) {
-          sliderImage.classList.add('active');
-        } else {
-          sliderImage.classList.remove('active');
-        }
+function checkSlide() {
+  const slideInAt =
+    window.scrollY + window.innerHeight - sliderImage.height / 2;
+  // bottom of the image
+  const imageBottom = sliderImage.offsetTop + sliderImage.height;
+  const isHalfShown = slideInAt > sliderImage.offsetTop;
+  const isNotScrolledPast = window.scrollY < imageBottom;
+  if (isHalfShown && isNotScrolledPast) {
+    sliderImage.classList.add('active');
+  } else {
+    sliderImage.classList.remove('active');
+  }
 }
-window.addEventListener('scroll',debounce(checkSlide));
+window.addEventListener('scroll', debounce(checkSlide));
 
 //modal for projects
 const modal = document.querySelector('.modal');
@@ -107,93 +108,81 @@ const modalText = document.querySelector('.caption');
 const projs = document.querySelectorAll('.proj');
 const closeButton = document.querySelector('.span-close');
 
-projs.forEach(proj=>proj.addEventListener('click',()=>{
-  const img = proj.querySelector('img').src;
-  const caption = proj.querySelector('.proj-inner-text').innerHTML;
-  
-  
-  modal.style.display ="block";
-  modalImage.src = img;
-  modalText.innerHTML = `click to visit <br> ${caption}`;
+projs.forEach((proj) =>
+  proj.addEventListener('click', () => {
+    const img = proj.querySelector('img').src;
+    const caption = proj.querySelector('.proj-inner-text').innerHTML;
 
-  
-  
+    modal.style.display = 'block';
+    modalImage.src = img;
+    modalText.innerHTML = `click to visit <br> ${caption}`;
 
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft =
+      window.pageXOffset || document.documentElement.scrollLeft;
+    window.onscroll = () => {
+      window.scrollTo(scrollLeft, scrollTop);
+    };
+  })
+);
 
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  const  scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-  window.onscroll = ()=>{window.scrollTo(scrollLeft,scrollTop)}
-
-  
-}));
-
-closeButton.addEventListener('click',()=>{
+closeButton.addEventListener('click', () => {
   modal.style.display = 'none';
-  window.onscroll = function(){};
+  window.onscroll = function () {};
 });
-modalText.addEventListener('click',()=>{
-  modal.style.display ='none';
-  window.onscroll = function(){};
-
+modalText.addEventListener('click', () => {
+  modal.style.display = 'none';
+  window.onscroll = function () {};
 });
 //about slide in animation/ listening for scroll event
 const about = document.querySelector('.about');
 const aboutHeader = document.querySelector('.about-header');
 const aboutHeaderBar = document.querySelector('.about-header-bar');
 
-
-function aboutSlideIn(){
+function aboutSlideIn() {
   //about.offsetHeight = 1167 height of about
   //about.offsetTop = 976 distance from top of window
   //window.innerHeight = 903 length of the window open
- const slideInAt = (window.scrollY + window.innerHeight)- about.offsetHeight / 3;
-  const aboutBottom = about.offsetTop + about.offsetHeight*2;
-  const isHalfShown = slideInAt>about.offsetTop;
-  const isNotScrolledPast = window.scrollY <aboutBottom;
+  const slideInAt =
+    window.scrollY + window.innerHeight - about.offsetHeight / 3;
+  const aboutBottom = about.offsetTop + about.offsetHeight * 2;
+  const isHalfShown = slideInAt > about.offsetTop;
+  const isNotScrolledPast = window.scrollY < aboutBottom;
 
-  if(isHalfShown && isNotScrolledPast){
+  if (isHalfShown && isNotScrolledPast) {
     aboutHeader.classList.add('slide-in-left');
     aboutHeaderBar.classList.add('slide-in-right');
-   
-  }else{
+  } else {
     aboutHeader.classList.remove('slide-in-left');
     aboutHeaderBar.classList.remove('slide-in-right');
-    
   }
+}
 
-  
-};
-
-
-window.addEventListener('scroll',aboutSlideIn);
+window.addEventListener('scroll', aboutSlideIn);
 //projects slide in animation on scroll
 const proj = document.querySelector('.project-section');
 
 const projectHeader = document.querySelector('.projects-header');
 const projectHeaderBar = document.querySelector('.projects-header-bar');
 
-function projectSlideIn(){
-  
- const slideInAt = (window.scrollY + window.innerHeight)- proj.offsetHeight / 3;
-  const projectBottom = proj.offsetTop + proj.offsetHeight*3;
-  const isHalfShown = slideInAt>proj.offsetTop;
-  const isNotScrolledPast = window.scrollY <projectBottom;
+function projectSlideIn() {
+  const slideInAt = window.scrollY + window.innerHeight - proj.offsetHeight / 3;
+  const projectBottom = proj.offsetTop + proj.offsetHeight * 3;
+  const isHalfShown = slideInAt > proj.offsetTop;
+  const isNotScrolledPast = window.scrollY < projectBottom;
 
-  if(isHalfShown && isNotScrolledPast){
+  if (isHalfShown && isNotScrolledPast) {
     projectHeader.classList.add('slide-in-left');
     projectHeaderBar.classList.add('slide-in-right');
-    console.log("added");
-  }else{
+    console.log('added');
+  } else {
     projectHeader.classList.remove('slide-in-left');
     projectHeaderBar.classList.remove('slide-in-right');
-    console.log("removed");
+    console.log('removed');
   }
+}
 
-  
-};
-
-
-window.addEventListener('scroll',projectSlideIn);
+window.addEventListener('scroll', projectSlideIn);
 //form and contact animation
 const form = document.querySelector('form');
 
@@ -201,78 +190,70 @@ const contactHeader = document.querySelector('.contact-header');
 const contactHeaderBar = document.querySelector('.contact-header-bar');
 const highlight = document.querySelector('.highlight');
 
+function formPopIn() {
+  const slideInAt = window.scrollY + window.innerHeight - form.offsetHeight / 2;
+  // bottom of the image
+  const imageBottom = form.offsetTop + form.offsetHeight * 6.3;
+  const isHalfShown = slideInAt > form.offsetTop;
+  const isNotScrolledPast = window.scrollY > imageBottom;
 
-
-  function formPopIn(){
-    
-    const slideInAt = (window.scrollY + window.innerHeight) - form.offsetHeight / 2;
-        // bottom of the image
-        const imageBottom = form.offsetTop + form.offsetHeight*6.3;
-        const isHalfShown = slideInAt > form.offsetTop;
-        const isNotScrolledPast = window.scrollY > imageBottom;
-       
-        if (isHalfShown && isNotScrolledPast) {
-          form.classList.add('animated','pop-in');
-          contactHeader.classList.add('slide-in-left');
-          contactHeaderBar.classList.add('slide-in-right');
-          highlight.classList.add('slide-in-right');
-          
-        } else {
-          form.classList.remove('animated', 'pop-in');
-          contactHeader.classList.remove('slide-in-left');
-          contactHeaderBar.classList.remove('slide-in-right');
-          highlight.classList.remove('slide-in-right');
-          
-        }
+  if (isHalfShown && isNotScrolledPast) {
+    form.classList.add('animated', 'pop-in');
+    contactHeader.classList.add('slide-in-left');
+    contactHeaderBar.classList.add('slide-in-right');
+    highlight.classList.add('slide-in-right');
+  } else {
+    form.classList.remove('animated', 'pop-in');
+    contactHeader.classList.remove('slide-in-left');
+    contactHeaderBar.classList.remove('slide-in-right');
+    highlight.classList.remove('slide-in-right');
   }
-window.addEventListener('scroll',formPopIn);
+}
+window.addEventListener('scroll', formPopIn);
 //contact-form submit
-
 
 const textArea = document.querySelector('textarea[type="text"]');
 const emailInput = document.querySelector('.email');
 const nameInput = document.querySelector('.name');
 const success = document.querySelector('.success');
 
-  
-form.addEventListener('submit',function(event){
+form.addEventListener('submit', function (event) {
   event.preventDefault();
-  
-  
-                   
+
   var formData = new FormData(this);
-    formData.append('service_id', 'service_stephn2027');
-    formData.append('template_id', 'template_zgxwwej');
-    formData.append('user_id', 'user_ks68kcqJevR0lKS5r515W');
- 
-    $.ajax('https://api.emailjs.com/api/v1.0/email/send-form', {
-        type: 'POST',
-        data: formData,
-        contentType: false, // auto-detection
-        processData: false // no need to parse formData to string
-        
-    }).done(function() {
-      textArea.value = "";
+  formData.append('service_id', 'service_stephn2027');
+  formData.append('template_id', 'template_zgxwwej');
+  formData.append('user_id', 'user_ks68kcqJevR0lKS5r515W');
+
+  $.ajax('https://api.emailjs.com/api/v1.0/email/send-form', {
+    type: 'POST',
+    data: formData,
+    contentType: false, // auto-detection
+    processData: false, // no need to parse formData to string
+  })
+    .done(function () {
+      textArea.value = '';
       textArea.focus();
-      emailInput.value="";
+      emailInput.value = '';
       emailInput.focus();
-      nameInput.value="";
+      nameInput.value = '';
       nameInput.focus();
-       
+
       success.classList.add('expand');
-        
-    }).fail(function(error) {
-        alert('Oops... ' + JSON.stringify(error));
+    })
+    .fail(function (error) {
+      alert('Oops... ' + JSON.stringify(error));
     });
 });
-document.querySelector('#close')
-.addEventListener('click', function(){
-  
+document.querySelector('#close').addEventListener('click', function () {
   success.classList.remove('expand');
-  
 });
 //sub text animation
-consoleText(['A Web Developer', '|| Software Developer.', 'Nice to meet you!'], 'text',['tomato','rebeccapurple','lightblue']);
+consoleText(
+  ['A Web Developer', '|| Software Developer.', 'Nice to meet you!'],
+  'text',
+  ['tomato', 'rebeccapurple', 'lightblue']
+);
 
 function consoleText(words, id, colors) {
   if (colors === undefined) colors = ['#fff'];
@@ -281,47 +262,42 @@ function consoleText(words, id, colors) {
   var letterCount = 1;
   var x = 1;
   var waiting = false;
-  var target = document.getElementById(id)
-  target.setAttribute('style', 'color:' + colors[0])
-  window.setInterval(function() {
-
+  var target = document.getElementById(id);
+  target.setAttribute('style', 'color:' + colors[0]);
+  window.setInterval(function () {
     if (letterCount === 0 && waiting === false) {
       waiting = true;
-      target.innerHTML = words[0].substring(0, letterCount)
-      window.setTimeout(function() {
+      target.innerHTML = words[0].substring(0, letterCount);
+      window.setTimeout(function () {
         var usedColor = colors.shift();
         colors.push(usedColor);
         var usedWord = words.shift();
         words.push(usedWord);
         x = 1;
-        target.setAttribute('style', 'color:' + colors[0])
+        target.setAttribute('style', 'color:' + colors[0]);
         letterCount += x;
         waiting = false;
-      }, 1000)
+      }, 1000);
     } else if (letterCount === words[0].length + 1 && waiting === false) {
       waiting = true;
-      window.setTimeout(function() {
+      window.setTimeout(function () {
         x = -1;
         letterCount += x;
         waiting = false;
-      }, 1000)
+      }, 1000);
     } else if (waiting === false) {
-      target.innerHTML = words[0].substring(0, letterCount)
+      target.innerHTML = words[0].substring(0, letterCount);
       letterCount += x;
     }
-  }, 120)
-  window.setInterval(function() {
+  }, 120);
+  window.setInterval(function () {
     if (visible === true) {
-      con.className = 'console-underscore hidden'
+      con.className = 'console-underscore hidden';
       visible = false;
-
     } else {
-      con.className = 'console-underscore'
+      con.className = 'console-underscore';
 
       visible = true;
     }
-  }, 400)
+  }, 400);
 }
-
-  
-  
