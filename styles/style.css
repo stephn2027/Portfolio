@@ -51,8 +51,8 @@ p {
   justify-content: center;
   align-items: center;
   text-align: justify;
-  width: min(95%, 100vw);
-  margin-inline:3rem;
+  width: min(95%, 100%);
+  margin-inline:0rem;
 }
 
 .container--narrow {
