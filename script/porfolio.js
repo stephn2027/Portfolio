@@ -5,6 +5,10 @@ const nav = document.querySelector('nav');
 const span = document.querySelector('.span-header');
 const navbar = document.querySelector('#navbar');
 
+import {calorie} from '../input';
+
+console.log(calorie);
+
 function handleEnter() {
   if (this.classList.contains('top')) {
     return;
